@@ -36,9 +36,10 @@ L76K GPS Module Information : https://www.seeedstudio.com/L76K-GNSS-Module-for-S
 #define BUTTON_PIN 21 // This is the Program Button
 #define BUTTON_NEED_PULLUP
 
-#define BATTERY_PIN -1
+#define BATTERY_PIN -1 // A battery voltage measurement pin, voltage divider connected here to measure battery voltage
 #define ADC_CHANNEL ADC1_GPIO1_CHANNEL
-#define BATTERY_SENSE_RESOLUTION_BITS 12
+#define ADC_ATTENUATION ADC_ATTEN_DB_2_5 // lower dB for high resistance voltage divider
+#define ADC_MULTIPLIER 4.9 * 1.045
 
 /*Warning:
     https://www.seeedstudio.com/L76K-GNSS-Module-for-Seeed-Studio-XIAO-p-5864.html
@@ -58,17 +59,17 @@ L76K GPS Module Information : https://www.seeedstudio.com/L76K-GNSS-Module-for-S
 #endif
 
 // XIAO S3 Expansion board  has 1.3 inch OLED Screen
-#define USCREEN_SSD1306
+#define USE_SSD1306
 
-#define I2C_SDA 5
-#define I2C_SCL 6
+#define I2C_SDA 17
+#define I2C_SCL 18
 
 // XIAO S3 LORA module
 #define USE_SX1262
 
-#define LORA_MISO 8
-#define LORA_SCK 7
-#define LORA_MOSI 9
+#define LORA_MISO 9
+#define LORA_SCK 8
+#define LORA_MOSI 10
 #define LORA_CS 41
 
 #define LORA_RESET 42
