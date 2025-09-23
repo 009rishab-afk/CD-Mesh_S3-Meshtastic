@@ -38,3 +38,84 @@ Join our community and help improve Meshtastic! 🚀
 
 ![Alt](https://repobeats.axiom.co/api/embed/8025e56c482ec63541593cc5bd322c19d5c0bdcf.svg "Repobeats analytics image")
 
+
+# Custom Meshtastic Node PCB (ESP32-S3 + SX1262)
+
+A compact, all-in-one **Meshtastic node** designed around the **ESP32-S3-WROOM-1** and **Wio SX1262 LoRa module**.  
+This project integrates USB-C charging, power management, LoRa communication, and user interface options into a single PCB, making it a reliable platform for off-grid mesh networking.
+
+
+---
+
+## ✨ Features
+
+- **ESP32-S3-WROOM-1** – Dual-core microcontroller with Wi-Fi + Bluetooth
+- **Wio SX1262 LoRa Module** – Long-range wireless communication
+- **USB Type-C** – Charging + programming
+- **LTC4054 Li-Ion charger IC** – Battery charging with blue LED indicator
+- **ADP124 LDO regulator** – Stable 3.3V supply
+- **User buttons** – Boot and Reset with debouncing
+- **Green status LED** – Connected to GPIO48
+- **User interface ports** – GPIO headers, battery connector, OLED header
+- **Optional PI antenna filter network** – For future RF tuning
+- Designed in **Altium Designer** (also reproducible in KiCad)
+
+---
+
+## 📦 Bill of Materials (BOM)
+
+| Component | Value / Part | Qty | Notes |
+|-----------|--------------|-----|-------|
+| MCU | ESP32-S3-WROOM-1 | 1 | Main processor |
+| LoRa Module | Wio SX1262 | 1 | Long-range RF |
+| Charger IC | LTC4054ES5 | 1 | Li-Ion charging |
+| LDO Regulator | ADP124-3.3 | 1 | Stable 3.3V output |
+| Capacitors | 10µF, 0.1µF | multiple | Decoupling |
+| LEDs | Green (GPIO48), Blue (charging) | 2 | Status |
+| Resistors | 390K, 100K, 10K, 5.1K, 2K, 330R | assorted | Pull-ups, dividers |
+| USB-C Connector | USB4105 | 1 | Power/programming |
+| JST Connector | 2-pin XH | 1 | Battery input |
+| Tactile Switches | SPST | 2 | Boot + Reset |
+
+Full BOM with part numbers: [BOM.txt](BOM.txt)
+
+---
+
+## 🖥️ Schematic Breakdown
+
+The schematic is segmented into six groups:
+
+1. **USB Type-C Port**  
+   - 5.1k resistors on CC1/CC2  
+   - TVS diodes on data + power lines  
+   - 10µF bulk capacitor for stability  
+
+2. **ESP32-S3-WROOM-1**  
+   - Decoupling (0.1µF + 10µF)  
+   - Green LED on IO48 for status  
+   - All other pins netlabeled  
+
+3. **User Buttons**  
+   - Boot + Reset tactile switches  
+   - 10k pull-ups and 0.1µF debounce caps  
+   - 390k/100k voltage divider for battery ADC  
+
+4. **User Interface Ports**  
+   - Extra GPIO headers  
+   - JST battery connector  
+   - OLED display header  
+
+5. **LoRa SX1262**  
+   - Wio SX1262 module with decoupling caps  
+   - Reset pulled up with 10k resistor  
+   - Optional PI antenna filter network (not populated)  
+
+6. **Power Supply**  
+   - LTC4054 Li-Ion charger with blue LED  
+   - 2k resistor sets charging current  
+   - ADP124-3.3 LDO regulator for clean 3.3V  
+   - 10µF caps on input/output of both ICs  
+
+---
+
+
