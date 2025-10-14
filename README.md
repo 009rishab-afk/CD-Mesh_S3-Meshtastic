@@ -1,7 +1,7 @@
 
 # Custom ESP32-S3 Meshtastic Node
 
-<div align="center">
+<div align="left">
 
 ![Project Status](https://img.shields.io/badge/Status-Active-success)
 ![Platform](https://img.shields.io/badge/Platform-ESP32--S3-orange)
