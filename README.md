@@ -21,12 +21,12 @@ This project is a fully custom PCB design for a **Meshtastic mesh networking nod
 
 ### What Makes This Different?
 
-- 🎯 **All-in-One Design**: No jumper wires, no stacked modules, just a single professional PCB
-- 🔋 **Complete Power Management**: USB-C charging, battery operation, and seamless power switching
-- 📡 **Long-Range Communication**: SX1262 LoRa transceiver with excellent range (several km line-of-sight)
-- 🔧 **Expandable Platform**: GPIO headers, OLED support, and sensor connections
-- 💪 **Field-Ready**: Compact form factor with optional 3D-printed enclosure
-- 📱 **Easy Configuration**: Setup via Bluetooth app or web interface
+-  **All-in-One Design**: No jumper wires, no stacked modules, just a single professional PCB
+-  **Complete Power Management**: USB-C charging, battery operation, and seamless power switching
+-  **Long-Range Communication**: SX1262 LoRa transceiver with excellent range (several km line-of-sight)
+-  **Expandable Platform**: GPIO headers, OLED support, and sensor connections
+-  **Field-Ready**: Compact form factor with optional 3D-printed enclosure
+-  **Easy Configuration**: Setup via Bluetooth app or web interface
 
 ---
 
