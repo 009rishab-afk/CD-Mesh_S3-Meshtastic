@@ -4,7 +4,6 @@
 <div align="center">
 
 ![Project Status](https://img.shields.io/badge/Status-Active-success)
-![License](https://img.shields.io/badge/License-MIT-blue)
 ![Platform](https://img.shields.io/badge/Platform-ESP32--S3-orange)
 ![Meshtastic](https://img.shields.io/badge/Meshtastic-Compatible-green)
 
@@ -116,10 +115,10 @@ This project is a fully custom PCB design for a **Meshtastic mesh networking nod
 - GPIO breakout for future expansion
 
 **📐 Design Files**:
-- `hardware/pcb/schematics/` - Altium Designer schematic files
-- `hardware/pcb/` - PCB layout files
-- `hardware/gerbers/` - Gerber files ready for fabrication
-- `hardware/bom/` - Interactive BOM and assembly drawings
+- `Hardware/PCB/Schematics/` - Altium Designer schematic files
+- `Hardware/PCB/` - PCB layout files
+- `Hardware/Gerbers/` - Gerber files ready for fabrication
+
 
 ---
 
