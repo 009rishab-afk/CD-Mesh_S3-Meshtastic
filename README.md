@@ -375,7 +375,6 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) for 
 
 
 **Meshtastic Community**:
-- Forum: [meshtastic.discourse.group](https://meshtastic.discourse.group/)
 - Discord: [Join Meshtastic Discord](https://discord.gg/meshtastic)
 - Reddit: [r/meshtastic](https://reddit.com/r/meshtastic)
 
