@@ -10,8 +10,6 @@
 
 *A compact, professional-grade Meshtastic node with integrated power management and long-range LoRa communication*
 
-[Features](#features) • [Hardware](#Hardware) • [Getting Started](#getting-started) • [Documentation](#documentation) • [Applications](#applications)
-
 </div>
 
 ---
