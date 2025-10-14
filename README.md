@@ -95,7 +95,7 @@ This project is a fully custom PCB design for a **Meshtastic mesh networking nod
 | OLED Display | 128x64 I²C | 1 | Status display |
 | Antenna | 868/915MHz LoRa | 1 | U.FL or SMA connector |
 
-**📥 Complete BOM with part numbers**: [Download BOM.csv](hardware/BOM.csv)
+**📥 Complete BOM with part numbers**: [Download BOM.csv](Hardware/BOM.csv)
 
 ### PCB Specifications
 
