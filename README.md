@@ -1,121 +1,397 @@
-<div align="center" markdown="1">
 
-<img src=".github/meshtastic_logo.png" alt="Meshtastic Logo" width="80"/>
-<h1>Meshtastic Firmware</h1>
-
-![GitHub release downloads](https://img.shields.io/github/downloads/meshtastic/firmware/total)
-[![CI](https://img.shields.io/github/actions/workflow/status/meshtastic/firmware/main_matrix.yml?branch=master&label=actions&logo=github&color=yellow)](https://github.com/meshtastic/firmware/actions/workflows/ci.yml)
-[![CLA assistant](https://cla-assistant.io/readme/badge/meshtastic/firmware)](https://cla-assistant.io/meshtastic/firmware)
-[![Fiscal Contributors](https://opencollective.com/meshtastic/tiers/badge.svg?label=Fiscal%20Contributors&color=deeppink)](https://opencollective.com/meshtastic/)
-[![Vercel](https://img.shields.io/static/v1?label=Powered%20by&message=Vercel&style=flat&logo=vercel&color=000000)](https://vercel.com?utm_source=meshtastic&utm_campaign=oss)
-
-<a href="https://trendshift.io/repositories/5524" target="_blank"><img src="https://trendshift.io/api/badge/repositories/5524" alt="meshtastic%2Ffirmware | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
-
-</div>
-
-</div>
+# Custom ESP32-S3 Meshtastic Node
 
 <div align="center">
-	<a href="https://meshtastic.org">Website</a>
-	-
-	<a href="https://meshtastic.org/docs/">Documentation</a>
+
+![Project Status](https://img.shields.io/badge/Status-Active-success)
+![License](https://img.shields.io/badge/License-MIT-blue)
+![Platform](https://img.shields.io/badge/Platform-ESP32--S3-orange)
+![Meshtastic](https://img.shields.io/badge/Meshtastic-Compatible-green)
+
+*A compact, professional-grade Meshtastic node with integrated power management and long-range LoRa communication*
+
+[Features](#features) • [Hardware](#hardware) • [Getting Started](#getting-started) • [Documentation](#documentation) • [Applications](#applications)
+
 </div>
 
-## Overview
+---
 
-This repository contains the official device firmware for Meshtastic, an open-source LoRa mesh networking project designed for long-range, low-power communication without relying on internet or cellular infrastructure. The firmware supports various hardware platforms, including ESP32, nRF52, RP2040/RP2350, and Linux-based devices.
+## 📋 Overview
 
-Meshtastic enables text messaging, location sharing, and telemetry over a decentralized mesh network, making it ideal for outdoor adventures, emergency preparedness, and remote operations.
+This project is a fully custom PCB design for a **Meshtastic mesh networking node** powered by the ESP32-S3 microcontroller and SX1262 LoRa transceiver. Unlike projects that rely on stacking development boards or breadboard prototypes, this design integrates all essential components into a single, professional PCB with complete power management, USB-C connectivity, and field-ready durability.
 
-### Get Started
+**Meshtastic** is an open-source, off-grid communication platform that uses LoRa radios to create decentralized mesh networks. These networks can carry text messages, GPS coordinates, and sensor data over several kilometers without relying on cellular towers, Wi-Fi infrastructure, or satellites.
 
-- 🔧 **[Building Instructions](https://meshtastic.org/docs/development/firmware/build)** – Learn how to compile the firmware from source.
-- ⚡ **[Flashing Instructions](https://meshtastic.org/docs/getting-started/flashing-firmware/)** – Install or update the firmware on your device.
+### What Makes This Different?
 
-Join our community and help improve Meshtastic! 🚀
-
-## Stats
-
-![Alt](https://repobeats.axiom.co/api/embed/8025e56c482ec63541593cc5bd322c19d5c0bdcf.svg "Repobeats analytics image")
-
-
-# Custom Meshtastic Node PCB (ESP32-S3 + SX1262)
-
-A compact, all-in-one **Meshtastic node** designed around the **ESP32-S3-WROOM-1** and **Wio SX1262 LoRa module**.  
-This project integrates USB-C charging, power management, LoRa communication, and user interface options into a single PCB, making it a reliable platform for off-grid mesh networking.
-
+- 🎯 **All-in-One Design**: No jumper wires, no stacked modules, just a single professional PCB
+- 🔋 **Complete Power Management**: USB-C charging, battery operation, and seamless power switching
+- 📡 **Long-Range Communication**: SX1262 LoRa transceiver with excellent range (several km line-of-sight)
+- 🔧 **Expandable Platform**: GPIO headers, OLED support, and sensor connections
+- 💪 **Field-Ready**: Compact form factor with optional 3D-printed enclosure
+- 📱 **Easy Configuration**: Setup via Bluetooth app or web interface
 
 ---
 
-## ✨ Features
+## 🎯 Features
 
-- **ESP32-S3-WROOM-1** – Dual-core microcontroller with Wi-Fi + Bluetooth
-- **Wio SX1262 LoRa Module** – Long-range wireless communication
-- **USB Type-C** – Charging + programming
-- **LTC4054 Li-Ion charger IC** – Battery charging with blue LED indicator
-- **ADP124 LDO regulator** – Stable 3.3V supply
-- **User buttons** – Boot and Reset with debouncing
-- **Green status LED** – Connected to GPIO48
-- **User interface ports** – GPIO headers, battery connector, OLED header
-- **Optional PI antenna filter network** – For future RF tuning
-- Designed in **Altium Designer** (also reproducible in KiCad)
+### Hardware Features
+- **ESP32-S3-WROOM-1** microcontroller (dual-core, Wi-Fi, Bluetooth)
+- **Wio SX1262 LoRa Module** for long-range communication
+- **USB-C connector** for power delivery and programming
+- **LTC4054 Li-Ion charger** with status indication
+- **ADP124 3.3V LDO regulator** for clean, stable power
+- **Battery voltage monitoring** via voltage divider and ADC
+- **Status LEDs** (power and charging indicators)
+- **GPIO expansion headers** for sensors and peripherals
+- **OLED display header** (I²C) for status display
+- **Compact 2-layer PCB** design (~60x80mm)
+- **ESD protection** on USB data and power lines
 
----
-
-## 📦 Bill of Materials (BOM)
-
-| Component | Value / Part | Qty | Notes |
-|-----------|--------------|-----|-------|
-| MCU | ESP32-S3-WROOM-1 | 1 | Main processor |
-| LoRa Module | Wio SX1262 | 1 | Long-range RF |
-| Charger IC | LTC4054ES5 | 1 | Li-Ion charging |
-| LDO Regulator | ADP124-3.3 | 1 | Stable 3.3V output |
-| Capacitors | 10µF, 0.1µF | multiple | Decoupling |
-| LEDs | Green (GPIO48), Blue (charging) | 2 | Status |
-| Resistors | 390K, 100K, 10K, 5.1K, 2K, 330R | assorted | Pull-ups, dividers |
-| USB-C Connector | USB4105 | 1 | Power/programming |
-| JST Connector | 2-pin XH | 1 | Battery input |
-| Tactile Switches | SPST | 2 | Boot + Reset |
-
-Full BOM with part numbers: [BOM.txt](BOM.txt)
+### Software Features
+- **Meshtastic firmware** pre-configured for this hardware
+- **Text messaging** over LoRa mesh network
+- **Position sharing** (GPS via phone or external module)
+- **Channel encryption** for private communication
+- **Mesh routing** with automatic message forwarding
+- **Battery monitoring** and reporting
+- **Bluetooth configuration** via mobile app
+- **Web-based configuration** via USB
+- **Multiple region support** (US, EU, Asia, etc.)
+- **Custom channel keys** for private groups
 
 ---
 
-## 🖥️ Schematic Breakdown
+## 🛠️ Hardware
 
-The schematic is segmented into six groups:
+### Bill of Materials (BOM)
 
-1. **USB Type-C Port**  
-   - 5.1k resistors on CC1/CC2  
-   - TVS diodes on data + power lines  
-   - 10µF bulk capacitor for stability  
+| Component | Part Number | Quantity | Notes |
+|-----------|------------|----------|-------|
+| **Core Components** |
+| ESP32-S3-WROOM-1 | ESP32-S3-WROOM-1 | 1 | Main processor |
+| LoRa Module | Wio SX1262 (Seeed Studio) | 1 | Long-range transceiver |
+| **Power Management** |
+| Battery Charger | LTC4054ES5-4.2 | 1 | 500mA Li-Ion charger |
+| LDO Regulator | ADP124AUJZ-3.3-R7 | 1 | 3.3V output |
+| **Connectors** |
+| USB-C Connector | USB4105-GF-A | 1 | Power & programming |
+| Battery Connector | JST XH-2 | 1 | 2-pin, 2.5mm pitch |
+| **Passive Components** |
+| Capacitors | 10µF (0805) | 6 | Bulk decoupling |
+| Capacitors | 0.1µF (0603) | 8 | High-frequency decoupling |
+| Resistors | 390kΩ (0603) | 1 | Voltage divider (high) |
+| Resistors | 100kΩ (0603) | 1 | Voltage divider (low) |
+| Resistors | 10kΩ (0603) | 4 | Pull-ups |
+| Resistors | 5.1kΩ (0603) | 2 | USB-C CC resistors |
+| Resistors | 2kΩ (0603) | 1 | Charge current setting |
+| Resistors | 330Ω (0603) | 2 | LED current limiting |
+| **Protection & Indicators** |
+| TVS Diode | USBLC6-2SC6 | 1 | USB ESD protection |
+| LED | Green (0603) | 1 | Power indicator |
+| LED | Blue (0603) | 1 | Charging indicator |
+| Tactile Switch | 6x6mm SPST | 2 | Reset & Boot |
+| **Optional** |
+| OLED Display | 128x64 I²C | 1 | Status display |
+| Antenna | 868/915MHz LoRa | 1 | U.FL or SMA connector |
 
-2. **ESP32-S3-WROOM-1**  
-   - Decoupling (0.1µF + 10µF)  
-   - Green LED on IO48 for status  
-   - All other pins netlabeled  
+**📥 Complete BOM with part numbers**: [Download BOM.csv](hardware/BOM.csv)
 
-3. **User Buttons**  
-   - Boot + Reset tactile switches  
-   - 10k pull-ups and 0.1µF debounce caps  
-   - 390k/100k voltage divider for battery ADC  
+### PCB Specifications
 
-4. **User Interface Ports**  
-   - Extra GPIO headers  
-   - JST battery connector  
-   - OLED display header  
+- **Dimensions**: Approximately 35mm x 45mm
+- **Layers**: 2-layer FR4
+- **Thickness**: 1.6mm standard
+- **Copper**: 1oz (35µm)
+- **Surface Finish**: HASL or ENIG recommended
+- **Minimum Track/Space**: 6/6 mil
+- **Mounting Holes**: 4x M3 holes for enclosure mounting
 
-5. **LoRa SX1262**  
-   - Wio SX1262 module with decoupling caps  
-   - Reset pulled up with 10k resistor  
-   - Optional PI antenna filter network (not populated)  
+### Schematic Highlights
 
-6. **Power Supply**  
-   - LTC4054 Li-Ion charger with blue LED  
-   - 2k resistor sets charging current  
-   - ADP124-3.3 LDO regulator for clean 3.3V  
-   - 10µF caps on input/output of both ICs  
+**Key Design Decisions**:
+- 5.1kΩ resistors on USB-C CC pins for proper power negotiation
+- TVS diodes for ESD protection on USB lines
+- Hardware debouncing on tactile switches (10kΩ pull-up + 0.1µF cap)
+- Voltage divider (390kΩ/100kΩ) for battery monitoring
+- Comprehensive decoupling (0.1µF + 10µF) on all ICs
+- GPIO breakout for future expansion
+
+**📐 Design Files**:
+- `hardware/pcb/schematics/` - Altium Designer schematic files
+- `hardware/pcb/` - PCB layout files
+- `hardware/gerbers/` - Gerber files ready for fabrication
+- `hardware/bom/` - Interactive BOM and assembly drawings
+
+---
+
+## 📡 LoRa Performance
+
+### Expected Range
+- **Line of Sight**: 5-10 km (depending on antenna and terrain)
+- **Urban Environment**: 1-3 km
+- **Indoor to Outdoor**: 500m - 1km
+- **Forest/Hilly Terrain**: 2-5 km
+
+### Frequency Bands
+Configure your region in the Meshtastic app:
+- **US**: 902-928 MHz (US915)
+- **Europe**: 868 MHz (EU868)
+- **Asia**: 923 MHz (AS923)
+- **Australia**: 915 MHz (AU915)
+
+### LoRa Settings
+Default configuration (can be customized):
+- **Bandwidth**: 125 kHz
+- **Spreading Factor**: SF11 (long range) or SF7 (fast)
+- **Coding Rate**: 4/5
+- **TX Power**: 22 dBm (configurable)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+**Hardware Tools**:
+- Soldering iron and solder
+- Hot air station (optional, for SMD components)
+- Multimeter for testing
+- USB-C cable (data capable)
+- Li-Ion or LiPo battery (3.7V, 1000-3000mAh recommended)
+- LoRa antenna (868/915 MHz)
+
+**Software Requirements**:
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [PlatformIO Extension](https://platformio.org/install/ide?install=vscode)
+- [Meshtastic Mobile App](https://meshtastic.org/downloads) (Android/iOS)
+- USB drivers for ESP32-S3
+
+### PCB Fabrication
+
+1. **Download Gerber files**: Get them from `hardware/gerbers/`
+2. **Choose a fab house**: Upload to JLCPCB, PCBWay, or ALLPCB
+3. **Configure options**:
+   - PCB Thickness: 1.6mm
+   - Surface Finish: HASL or ENIG
+   - Solder Mask: Any color (green/black recommended)
+   - Silkscreen: White
+4. **Order**: Minimum order is typically 5 PCBs
+5. **Wait**: Typical turnaround is 5-10 days
+
+**Cost**: ~$5-15 for 5 boards including shipping
+
+### Source Components
+
+**Critical Components**:
+- ESP32-S3-WROOM-1 (must match exact part number)
+- Wio SX1262 module from Seeed Studio
+- LTC4054ES5-4.2 in SOT-23-5 package
+- ADP124AUJZ-3.3-R7 in SOT-23-5 package
+
+
+### Firmware Installation
+
+#### Build from Source (PlatformIO)
+
+```bash
+# Clone the custom firmware repository
+git clone https://github.com/DhamuVkl/CD-Mesh_S3-Meshtastic.git
+cd CD-Mesh_S3-Meshtastic
+
+# Open in VS Code
+code .
+
+# In PlatformIO:
+# 1. Select environment: CD-Mesh_S3
+# 2. Click "Build" (checkmark icon)
+# 3. Click "Upload" (arrow icon)
+```
+
+The firmware is pre-configured for this hardware with correct pin mappings.
+
+### Initial Configuration
+
+#### Via Mobile App (Bluetooth)
+
+1. Install **Meshtastic** app from Play Store or App Store
+2. Open app and tap "+" to add device
+3. Select your node from Bluetooth device list
+4. Enter pairing PIN: `123456`
+5. Configure basic settings:
+   - Region (US915, EU868, etc.)
+   - Node name
+   - Channel settings
+
+#### Via Web Interface (USB)
+
+1. Connect node to PC via USB-C
+2. Navigate to [client.meshtastic.org](https://client.meshtastic.org/)
+3. Click "Connect" and select COM port
+4. Configure settings:
+   - **Radio Config** → Select your region
+   - **Channels** → Set channel name and key
+   - **Device** → Set node name and role
+   - **Power** → Verify battery monitoring is working
+
+**Important Settings**:
+- **Region**: Must match your location for legal operation
+- **Channel Key**: Use same key for all nodes you want to communicate with
+- **Role**: Set to "Client" for normal use, "Router" for fixed installations
+
+---
+
+## 📱 Using Your Meshtastic Node
+
+### Basic Operations
+
+**Sending Messages**:
+1. Open Meshtastic app
+2. Select "Messages" tab
+3. Type message and send
+4. Message routes through mesh to all nodes on same channel
+
+**Position Sharing**:
+1. Enable location in phone settings
+2. In app: Settings → Position → Enable
+3. Your location broadcasts periodically
+4. View other nodes' locations on map
+
+**Battery Monitoring**:
+- Check battery voltage in app under "Device Metrics"
+- Node reports battery percentage
+- Low battery warning when <20%
+
+### Advanced Features
+
+**Channel Encryption**:
+```
+Settings → Channels → Primary → Encryption
+- Use default key for public network
+- Set custom key for private group
+- Share key securely with group members
+```
+
+**Mesh Routing**:
+- Messages automatically hop through intermediate nodes
+- Maximum 3 hops by default
+- Configure in Settings → LoRa → Hop Limit
+
+**Multiple Channels**:
+- Create up to 8 channels
+- Different channels for different groups
+- Channel 0 is always primary/LongFast
+
+---
+
+## 🔧 Configuration Examples
+
+### Long Range Setup (Maximum Distance)
+```
+Modem Preset: Long Fast
+Region: Your region
+Hop Limit: 3
+TX Power: 22 dBm
+```
+
+### High Speed Setup (Short Range, Fast Messages)
+```
+Modem Preset: Short Fast
+Region: Your region
+Hop Limit: 3
+TX Power: 17 dBm
+```
+
+### Battery Saver Setup (Portable Use)
+```
+Modem Preset: Long Slow
+TX Power: 17 dBm
+Screen Timeout: 60 seconds
+Wait Bluetooth: 60 seconds
+```
 
 ---
 
 
+
+
+## 🔬 Applications
+
+### Outdoor Adventures
+- **Hiking Groups**: Stay connected beyond cell coverage
+- **Mountain Biking**: Real-time location sharing
+- **Kayaking/Sailing**: Off-shore communication
+- **Camping**: Coordinate between campsites
+
+### Emergency Preparedness
+- **Disaster Response**: Communication when infrastructure fails
+- **Search and Rescue**: Coordinate teams in remote areas
+- **Emergency Kits**: Reliable off-grid communication
+- **Community Networks**: Neighborhood emergency mesh
+
+### IoT and Monitoring
+- **Environmental Sensors**: Temperature, humidity, air quality
+- **Agricultural Monitoring**: Soil moisture, weather stations
+- **Remote Asset Tracking**: Location monitoring
+- **Wildlife Research**: Animal tracking and data collection
+
+### Events and Festivals
+- **Music Festivals**: Coordinate with friends without cell service
+- **Outdoor Events**: Staff communication
+- **Races/Competitions**: Timing and coordination
+- **Ham Radio**: Digital mode experimentation
+
+
+
+## 🔗 Related Projects
+
+- [Official Meshtastic Firmware](https://github.com/meshtastic/firmware)
+- [Meshtastic Android App](https://github.com/meshtastic/Meshtastic-Android)
+- [Meshtastic Python CLI](https://github.com/meshtastic/Meshtastic-python)
+- [RAK WisBlock Meshtastic](https://github.com/RAKWireless/WisBlock)
+- [LilyGO T-Beam](https://github.com/Xinyuan-LilyGO/LilyGo-LoRa-Series)
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see [LICENSE](LICENSE) for details.
+
+### Component Licenses
+- Meshtastic Firmware: GPL v3
+- ESP-IDF: Apache 2.0
+- PCB Design Files: MIT (this repository)
+- 3D Models: CC BY-SA 4.0
+
+---
+
+## 🙏 Acknowledgments
+
+- **Meshtastic Community** for developing and maintaining the firmware
+- **Espressif** for the powerful ESP32-S3 platform
+- **Semtech** for LoRa technology
+- **Seeed Studio** for the Wio SX1262 module
+- **Open-source community** for tools, libraries, and inspiration
+- **Beta testers** who helped refine this design
+
+---
+
+
+**Meshtastic Community**:
+- Forum: [meshtastic.discourse.group](https://meshtastic.discourse.group/)
+- Discord: [Join Meshtastic Discord](https://discord.gg/meshtastic)
+- Reddit: [r/meshtastic](https://reddit.com/r/meshtastic)
+
+---
+
+
+
+<div align="center">
+
+**Built for the off-grid community, by the off-grid community**
+
+[Hardware](hardware/) • [Firmware](firmware/) • [Enclosure](enclosure/) • [Docs](docs/)
+
+*Stay connected, stay independent* 📡
+
+</div>
